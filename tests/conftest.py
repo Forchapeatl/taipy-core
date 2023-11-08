@@ -57,6 +57,8 @@ from src.taipy.core.scenario.scenario_id import ScenarioId
 from src.taipy.core.sequence._sequence_manager_factory import _SequenceManagerFactory
 from src.taipy.core.sequence.sequence import Sequence
 from src.taipy.core.sequence.sequence_id import SequenceId
+from src.taipy.core.submission._submission_model import _SubmissionModel
+from src.taipy.core.submission.submission import Submission
 from src.taipy.core.task._task_manager_factory import _TaskManagerFactory
 from src.taipy.core.task._task_model import _TaskModel
 from src.taipy.core.task.task import Task
@@ -449,6 +451,7 @@ def init_sql_repo(tmp_sqlite):
     _ScenarioModel.__table__.drop(bind=engine, checkfirst=True)
     _TaskModel.__table__.drop(bind=engine, checkfirst=True)
     _VersionModel.__table__.drop(bind=engine, checkfirst=True)
+    _SubmissionModel.__table__.drop(bind=engine, checkfirst=True)
 
     _CycleModel.__table__.create(bind=engine, checkfirst=True)
     _DataNodeModel.__table__.create(bind=engine, checkfirst=True)
@@ -456,5 +459,6 @@ def init_sql_repo(tmp_sqlite):
     _ScenarioModel.__table__.create(bind=engine, checkfirst=True)
     _TaskModel.__table__.create(bind=engine, checkfirst=True)
     _VersionModel.__table__.create(bind=engine, checkfirst=True)
+    _SubmissionModel.__table__.create(bind=engine, checkfirst=True)
 
     return tmp_sqlite
