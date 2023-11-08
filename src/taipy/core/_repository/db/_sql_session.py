@@ -35,12 +35,13 @@ class _SQLSession:
         cls._engine = _build_engine()
         cls._SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=cls._engine)
 
-        from ....core._version._version_model import _VersionModel
-        from ....core.cycle._cycle_model import _CycleModel
-        from ....core.data._data_model import _DataNodeModel
-        from ....core.job._job_model import _JobModel
-        from ....core.scenario._scenario_model import _ScenarioModel
-        from ....core.task._task_model import _TaskModel
+        from ..._version._version_model import _VersionModel
+        from ...cycle._cycle_model import _CycleModel
+        from ...data._data_model import _DataNodeModel
+        from ...job._job_model import _JobModel
+        from ...scenario._scenario_model import _ScenarioModel
+        from ...submission._submission_model import _SubmissionModel
+        from ...task._task_model import _TaskModel
 
         _CycleModel.__table__.create(bind=cls._engine, checkfirst=True)
         _DataNodeModel.__table__.create(bind=cls._engine, checkfirst=True)
@@ -48,6 +49,7 @@ class _SQLSession:
         _ScenarioModel.__table__.create(bind=cls._engine, checkfirst=True)
         _TaskModel.__table__.create(bind=cls._engine, checkfirst=True)
         _VersionModel.__table__.create(bind=cls._engine, checkfirst=True)
+        _SubmissionModel.__table__.create(bind=cls._engine, checkfirst=True)
 
         return cls._SessionLocal
 
